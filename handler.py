@@ -35,8 +35,9 @@ def registerCommands():
     headers = {
         "User-Agent": "discord-slash-commands-helloworld",
         "Content-Type": "application/json",
-        "Authorization": DISCORD_TOKEN
+        "Authorization": "Bot " + DISCORD_TOKEN
     }
+    print(headers)
 
     for c in commands:
         requests.post(endpoint, headers=headers, json=c).raise_for_status()
@@ -54,11 +55,14 @@ def callback(event: dict, context: dict):
     # API Gateway has weird case conversion, so we need to make them lowercase.
     # See https://github.com/aws/aws-sam-cli/issues/1860
     headers: dict = { k.lower(): v for k, v in event['headers'].items() }
+    print(event)
     rawBody: str = event['body']
 
     # validate request
     signature = headers.get('x-signature-ed25519')
+    print(signature)
     timestamp = headers.get('x-signature-timestamp')
+    print(timestamp)
     if not verify(signature, timestamp, rawBody):
         return {
             "cookies": [],
@@ -80,7 +84,7 @@ def callback(event: dict, context: dict):
 
         text = "Hello!"
         if 'user' in opts:
-            text = f"Hello, <@{opts['user']}>!"
+            text = f"私はMC_botです。Hello, <@{opts['user']}>!"
 
         return {
             "type": 4, # InteractionResponseType.ChannelMessageWithSource

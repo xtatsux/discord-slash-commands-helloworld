@@ -1,3 +1,5 @@
+/.devcontainer
+envfile.env
 /.vscode
 
 /.aws-sam

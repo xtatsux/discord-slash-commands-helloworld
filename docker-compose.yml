@@ -1,0 +1,11 @@
+version: '3'
+services:
+  discordbot_devenv:
+    env_file:
+      - ./envfile.env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: discordbot_devenv
+    container_name: discordbot_devenv
+    tty: true
