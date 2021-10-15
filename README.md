@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-VS CodeのRemote 
+VS CodeのRemote Container機能の利用を前提にした手順です。
 
 1. リポジトリをクローン
 2. VS Codeでディレトリを開く
